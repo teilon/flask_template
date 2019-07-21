@@ -1,12 +1,12 @@
 from flask import Flask, render_template, url_for, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
-import dev_settings as conf
+# import dev_settings as config
+import config
 
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://torn:helicopter@{}:{}/{}'.\
-    format(conf.POSTGRES_HOST, conf.POSTGRES_PORT, conf.POSTGRES_DATABASE)
+app.config['SQLALCHEMY_DATABASE_URI'] = config.SQLALCHEMY_DATABASE_URI
 db = SQLAlchemy(app)
 
 class Todo(db.Model):
