@@ -9,6 +9,7 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = config.SQLALCHEMY_DATABASE_URI
 db = SQLAlchemy(app)
 
+
 class Todo(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     content = db.Column(db.String(200), nullable=False)
@@ -17,6 +18,7 @@ class Todo(db.Model):
 
     def __repr__(self):
         return '<Task %r>' % self.id
+
 
 @app.route("/", methods=['POST', 'GET'])
 def hello():
@@ -36,6 +38,7 @@ def hello():
         tasks = Todo.query.order_by(Todo.date_created).all()
         return render_template('index.html', tasks=tasks)
 
+
 @app.route('/delete/<int:id>')
 def delete(id):
     task_to_delete = Todo.query.get_or_404(id)
@@ -46,6 +49,7 @@ def delete(id):
         return redirect('/')
     except:
         return 'There was a problem deleting that task'
+
 
 @app.route('/update/<int:id>', methods=['GET', 'POST'])
 def update(id):
