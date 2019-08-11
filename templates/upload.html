@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Task Master</title>
+{% endblock %}
+
+{% block body %}
+<div class="content">
+    <h1>Upload file</h1>
+
+    <form method=post enctype=multipart/form-data>
+      <input type="text" name="month" value="unknow">
+      <input type=file name=file>
+      <input type=submit value=Upload>
+    </form>
+
+</div>
+{% endblock %}
